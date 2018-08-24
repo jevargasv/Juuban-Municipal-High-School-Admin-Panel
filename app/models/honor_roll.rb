@@ -1,0 +1,2 @@
+class HonorRoll < ApplicationRecord
+end
