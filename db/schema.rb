@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_214544) do
+ActiveRecord::Schema.define(version: 2018_08_23_154055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,8 @@ ActiveRecord::Schema.define(version: 2018_08_23_214544) do
     t.string "last_name"
     t.string "photo_url"
     t.string "email"
-    t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_admins_on_admin_id"
   end
 
   create_table "cohorts", force: :cascade do |t|
@@ -33,11 +31,9 @@ ActiveRecord::Schema.define(version: 2018_08_23_214544) do
     t.string "icon_url"
     t.bigint "course_id"
     t.bigint "teacher_id"
-    t.bigint "grade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["course_id"], name: "index_cohorts_on_course_id"
-    t.index ["grade_id"], name: "index_cohorts_on_grade_id"
     t.index ["teacher_id"], name: "index_cohorts_on_teacher_id"
   end
 
@@ -46,7 +42,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_214544) do
     t.string "location"
     t.string "description"
     t.string "icon_url"
-    t.date "class_hours"
+    t.string "class_hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,11 +66,8 @@ ActiveRecord::Schema.define(version: 2018_08_23_214544) do
     t.string "photo_url"
     t.string "email"
     t.boolean "good"
-    t.string "rank"
-    t.bigint "cohort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cohort_id"], name: "index_students_on_cohort_id"
   end
 
   create_table "teachers", force: :cascade do |t|

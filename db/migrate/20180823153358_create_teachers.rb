@@ -1,5 +1,5 @@
 class CreateTeachers < ActiveRecord::Migration[5.2]
-  def up
+  def change
     create_table :teachers do |t|
       t.string :first_name
       t.string :last_name
@@ -11,13 +11,9 @@ class CreateTeachers < ActiveRecord::Migration[5.2]
       t.integer :salary
       t.string :education
       t.string :subject
-      t.references :cohort
+      t.references :cohort, index: true
 
       t.timestamps
     end
-  end
-
-  def down
-    drop_table :teachers
   end
 end

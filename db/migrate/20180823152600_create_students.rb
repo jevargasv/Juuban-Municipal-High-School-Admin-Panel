@@ -1,5 +1,5 @@
 class CreateStudents < ActiveRecord::Migration[5.2]
-  def up
+  def change
     create_table :students do |t|
       t.string :first_name
       t.string :last_name
@@ -9,13 +9,8 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.string :photo_url
       t.string :email
       t.boolean :good
-      t.references :cohort
 
       t.timestamps
     end
-  end
-
-  def down
-    drop_table :students
   end
 end
