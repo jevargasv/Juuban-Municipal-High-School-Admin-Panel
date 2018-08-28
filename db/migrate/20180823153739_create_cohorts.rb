@@ -1,18 +1,14 @@
 class CreateCohorts < ActiveRecord::Migration[5.2]
-  def up
+  def change
     create_table :cohorts do |t|
       t.string :name
       t.string :start_date
       t.string :end_date
       t.string :icon_url
-      t.references :course
-      t.references :teacher
-      t.references :grade
+      t.references :course, index: true
+      t.references :teacher, index: true
 
       t.timestamps
     end
-  end
-  def down
-    drop_table :cohorts
   end
 end
