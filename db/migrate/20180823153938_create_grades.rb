@@ -1,12 +1,9 @@
 class CreateGrades < ActiveRecord::Migration[5.2]
   def up
     create_table :grades do |t|
-      t.integer :grade
       t.boolean :pass
-      t.integer :student_id
-      t.integer :teacher_id
-      t.integer :cohort_id
-      t.integer :course_id
+      t.references :student
+      t.references :cohort
 
       t.timestamps
     end
