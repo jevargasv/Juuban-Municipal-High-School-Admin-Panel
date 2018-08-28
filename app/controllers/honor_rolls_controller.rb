@@ -1,2 +1,0 @@
-class HonorRollsController < ApplicationController
-end

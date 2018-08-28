@@ -3,8 +3,9 @@ class CreateAdmins < ActiveRecord::Migration[5.2]
     create_table :admins do |t|
       t.string :first_name
       t.string :last_name
+      t.string :photo_url
       t.string :email
-      t.string :admin_id
+      t.references :admin
 
       t.timestamps
     end

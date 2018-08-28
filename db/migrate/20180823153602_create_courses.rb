@@ -3,10 +3,9 @@ class CreateCourses < ActiveRecord::Migration[5.2]
     create_table :courses do |t|
       t.string :name
       t.string :location
-      t.integer :exact_hours
-      t.integer :course_id
-      t.integer :cohort_id
-      t.integer :teacher_id
+      t.string :description
+      t.string :icon_url
+      t.string :class_hours
 
       t.timestamps
     end
