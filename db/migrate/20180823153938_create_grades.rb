@@ -2,8 +2,8 @@ class CreateGrades < ActiveRecord::Migration[5.2]
   def change
     create_table :grades do |t|
       t.boolean :pass
-      t.references :student, index: true
-      t.references :cohort, index: true
+      t.integer :cohort_id
+      t.integer :student_id
 
       t.timestamps
     end

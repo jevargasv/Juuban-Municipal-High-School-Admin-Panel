@@ -8,10 +8,9 @@ class CreateTeachers < ActiveRecord::Migration[5.2]
       t.string :photo_url
       t.string :email
       t.boolean :fair
-      t.integer :salary
+      t.string :salary
       t.string :education
       t.string :subject
-      t.references :cohort, index: true
 
       t.timestamps
     end
