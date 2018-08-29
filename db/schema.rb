@@ -29,12 +29,10 @@ ActiveRecord::Schema.define(version: 2018_08_23_154055) do
     t.string "start_date"
     t.string "end_date"
     t.string "icon_url"
-    t.bigint "course_id"
-    t.bigint "teacher_id"
+    t.integer "course_id"
+    t.integer "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_cohorts_on_course_id"
-    t.index ["teacher_id"], name: "index_cohorts_on_teacher_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -49,12 +47,10 @@ ActiveRecord::Schema.define(version: 2018_08_23_154055) do
 
   create_table "grades", force: :cascade do |t|
     t.boolean "pass"
-    t.bigint "student_id"
-    t.bigint "cohort_id"
+    t.integer "cohort_id"
+    t.integer "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cohort_id"], name: "index_grades_on_cohort_id"
-    t.index ["student_id"], name: "index_grades_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -78,13 +74,11 @@ ActiveRecord::Schema.define(version: 2018_08_23_154055) do
     t.string "photo_url"
     t.string "email"
     t.boolean "fair"
-    t.integer "salary"
+    t.string "salary"
     t.string "education"
     t.string "subject"
-    t.bigint "cohort_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cohort_id"], name: "index_teachers_on_cohort_id"
   end
 
 end
