@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-  get 'attendances/index'
-  get 'calendars/index'
-  get 'schedules/index'
-  get 'teachers/index'
-  get 'courses/index'
-  get 'students/index'
-  get 'cohorts/index'
-  get 'grades/index'
-  get 'admins/index'
-  root :to => 'pages#index'
-  get 'pages/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users
+  root 'pages#index'
+  
+  resources :teachers
+  resources :courses
+  resources :students
+  resources :cohorts
+  resources :grades
+  resources :admins
+
 end

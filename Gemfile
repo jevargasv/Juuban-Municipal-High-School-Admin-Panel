@@ -63,10 +63,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap', '~> 4.1.3'
 
-# English to Japanese translator and vice-versa
-gem 'i18n', '~> 1.1.0'
+# Default language
+gem 'rails-i18n', '~> 5.1.1'
 
 # Fake information generator
 gem 'faker', '~> 1.9.1'
 
 gem 'rake', '~> 12.3.1'
+
+# Authentication and cookies
+
+gem 'devise', '~> 4.5.0'

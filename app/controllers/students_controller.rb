@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @students = Student.all
   end
@@ -10,7 +12,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      flash[:success] = "Student has been successfully added to roster!"
+      flash[:success] = "Student '#{@student.full_name}' has been successfully added to roster!"
       redirect_to '/students'
     else
       render 'new'
@@ -28,8 +30,8 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     if @student.update(student_params)
-      flash[:alert] = "Student has been successfully updated to roster!"
-      redirect_to @student
+      flash[:alert] = "Student '#{@student.full_name}' has been successfully updated to roster!"
+      redirect_to '/students/#{:id}'
     else
       render 'edit'
     end
@@ -38,7 +40,7 @@ class StudentsController < ApplicationController
   def destroy
     @student = Student.find(params[:id])
     @student.destroy
-    flash[:warning] = "Student has been successfully deleted to roster!"
+    flash[:warning] = "Student '#{@student.full_name}' has been successfully deleted to roster!"
     redirect_to '/students'
   end
 

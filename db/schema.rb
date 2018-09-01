@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_23_154055) do
+ActiveRecord::Schema.define(version: 2018_08_30_131824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_08_23_154055) do
     t.string "first_name"
     t.string "last_name"
     t.string "photo_url"
-    t.string "email"
+    t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,10 +29,12 @@ ActiveRecord::Schema.define(version: 2018_08_23_154055) do
     t.string "start_date"
     t.string "end_date"
     t.string "icon_url"
-    t.integer "course_id"
-    t.integer "teacher_id"
+    t.bigint "course_id"
+    t.bigint "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_cohorts_on_course_id"
+    t.index ["teacher_id"], name: "index_cohorts_on_teacher_id"
   end
 
   create_table "courses", force: :cascade do |t|
@@ -47,10 +49,12 @@ ActiveRecord::Schema.define(version: 2018_08_23_154055) do
 
   create_table "grades", force: :cascade do |t|
     t.boolean "pass"
-    t.integer "cohort_id"
-    t.integer "student_id"
+    t.bigint "cohort_id"
+    t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cohort_id"], name: "index_grades_on_cohort_id"
+    t.index ["student_id"], name: "index_grades_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
@@ -72,13 +76,32 @@ ActiveRecord::Schema.define(version: 2018_08_23_154055) do
     t.integer "age"
     t.string "date_of_birth"
     t.string "photo_url"
-    t.string "email"
+    t.string "username"
     t.boolean "fair"
     t.string "salary"
     t.string "education"
     t.string "subject"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "user_type_id"
+    t.string "user_type_type"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

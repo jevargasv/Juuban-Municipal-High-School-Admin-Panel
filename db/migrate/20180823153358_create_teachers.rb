@@ -6,7 +6,7 @@ class CreateTeachers < ActiveRecord::Migration[5.2]
       t.integer :age
       t.string :date_of_birth
       t.string :photo_url
-      t.string :email
+      t.string :username
       t.boolean :fair
       t.string :salary
       t.string :education

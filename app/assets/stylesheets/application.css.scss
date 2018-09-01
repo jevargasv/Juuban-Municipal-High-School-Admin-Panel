@@ -1,0 +1,89 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Navbar */
+
+   .navbar {
+    background-color: rgb(11, 77, 165);
+    padding: 20px;
+   }
+
+   img {
+    margin-bottom: -30px;
+    margin-left: -20px;
+   }
+  
+  .navbar .form-control {
+    padding: .75rem 1rem;
+    border-width: 0;
+    border-radius: 0;
+  }
+
+  .navbar .nav-item {
+    list-style-type: none;
+  }
+
+  .navbar .nav-item .nav-link {
+    text-decoration: none;
+    color: white;
+    font-family: "Gill Sans";
+  }
+  
+  .form-control-dark {
+    color: #fff;
+    background-color: white;
+    width: 400px;
+    border-color: rgba(255, 255, 255, 1);
+    margin-top: -14px;
+  }
+  
+  .form-control-dark:focus {
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 1);
+  }
+
+  /* Sidebar */
+  
+  .sidebar {
+    position: fixed;
+    background-color: rgb(64, 165, 224);
+    padding: 30px 55px; /* Height of navbar */
+  }
+  
+  .sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
+  
+  @supports ((position: -webkit-sticky) or (position: sticky)) {
+    .sidebar-sticky {
+      position: -webkit-sticky;
+      position: sticky;
+    }
+  }
+
+  .sidebar .nav-item {
+    list-style-type: none;
+    margin-left: -26px;
+  }
+  
+  .sidebar .nav-link {
+    font-family: "Gill Sans";
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+  }
+  
+  /* Content */
+  
+  [role="main"] {
+    padding-top: 50px; /* Space for fixed navbar */
+  }
+  
