@@ -16,9 +16,13 @@
 
     <%= render 'shared/navbar' %>
     <%= render 'shared/sidebar' %>
-
+   
+    <div class="container-fluid">
+    <div class="flash-messages">
+     <%= render "shared/flash" %>
+    </div>
+   </div>
  
-      
     <div class="container-fluid">
       <%= yield %>
     </div>

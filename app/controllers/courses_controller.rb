@@ -31,7 +31,7 @@ class CoursesController < ApplicationController
   def update
     @course = Course.find(params[:id])
     if @course.update(course_params)
-      flash[:alert] = "Course '#{@course.name}' has been successfully updated to roster!"
+      flash[:notice] = "Course '#{@course.name}' has been successfully updated to roster!"
       redirect_to '/courses/#{:id}'
     else
       render 'edit'
@@ -41,7 +41,7 @@ class CoursesController < ApplicationController
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
-    flash[:warning] = "Course '#{@course.name}' has been successfully deleted to roster!"
+    flash[:alert] = "Course '#{@course.name}' has been successfully deleted to roster!"
     redirect_to '/courses'
   end
 

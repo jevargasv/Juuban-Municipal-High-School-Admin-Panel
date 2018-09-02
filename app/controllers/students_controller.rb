@@ -30,7 +30,7 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find(params[:id])
     if @student.update(student_params)
-      flash[:alert] = "Student '#{@student.full_name}' has been successfully updated to roster!"
+      flash[:notice] = "Student '#{@student.full_name}' has been successfully updated to roster!"
       redirect_to '/students/#{:id}'
     else
       render 'edit'
@@ -40,7 +40,7 @@ class StudentsController < ApplicationController
   def destroy
     @student = Student.find(params[:id])
     @student.destroy
-    flash[:warning] = "Student '#{@student.full_name}' has been successfully deleted to roster!"
+    flash[:alert] = "Student '#{@student.full_name}' has been successfully deleted to roster!"
     redirect_to '/students'
   end
 

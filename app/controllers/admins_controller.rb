@@ -31,7 +31,7 @@ class AdminsController < ApplicationController
   def update
     @admin = Admin.find(params[:id])
     if @admin.update(admin_params)
-      flash[:alert] = "Admin '#{@admin.full_name}' has been successfully updated to roster!"
+      flash[:notice] = "Admin '#{@admin.full_name}' has been successfully updated to roster!"
       redirect_to '/admins/#{:id}'
     else
       render 'edit'
@@ -41,7 +41,7 @@ class AdminsController < ApplicationController
   def destroy
     @admin = Admin.find(params[:id])
     @admin.destroy
-    flash[:warning] = "Admin '#{@admin.full_name}' has been successfully deleted to roster!"
+    flash[:alert] = "Admin '#{@admin.full_name}' has been successfully deleted to roster!"
     redirect_to '/admins'
   end
 

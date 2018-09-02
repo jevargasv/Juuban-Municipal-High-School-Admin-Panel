@@ -1,12 +1,30 @@
-<div class="container-fluid">
-    <div id="flash_messages">
-        <%= render "shared/flash" %>
-    </div>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= favicon_link_tag ("brooch.png") %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit="no">
+    <title>Juuban Municipal High School Admin Panel</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
 
-<div class="container-fluid">
-    <%= yield %>
-</div>
+  <body>
+
+    <%= render 'shared/navbar' %>
+    <%= render 'shared/sidebar' %>
+    <%= render "shared/flash" %>
+ 
+      
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+
+</body>
+</html>
 
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
