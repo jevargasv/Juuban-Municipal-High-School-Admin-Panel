@@ -1,1 +1,37 @@
-
+<h3 class="admin-table"> Admin Roster </h3>
+ <table class="table table-hover">
+  <thead>
+   <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Photo</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <% if user_signed_in? && current_user.user_type_type == "Admin" || current_user.user_type_type == "Teacher" %>
+    <th scope="col">Username</th>
+    <% end %>
+    <th>View<th>
+    <th>Add</th>
+    <th>Edit</th>
+    <th>Delete</th>
+   </tr>
+  </thead>
+  <tbody>
+   <% @admins.each do |admin| %>
+    <tr>
+     <td scope="row"><%= admin.id %></td>
+     <td><%= admin.photo_url %></td>
+     <td><%= admin.first_name %></td>
+     <td><%= admin.last_name %></td>
+     <% if user_signed_in? && current_user.user_type_type == "Admin" || current_user.user_type_type == "Teacher" %>
+     <td><%= admin.username %></td>
+     <% end %>
+     <% if user_signed_in? && current_user.user_type_type == "Admin" || current_user.user_type_type == "Teacher" %>
+     <td><%= link_to("View", "/admins/<%=admin.id%>") %></td>
+     <td><%= link_to("Add", "/admins/new") %></td>
+     <td><%= link_to("Edit", "/admins/<%admin.id%>/edit") %></td>
+     <td><%= link_to("Delete", admin_path(@admin), method: :delete, data: {confirm: 'Are you certain about deleting this admin?'} %></td>
+    </tr>
+   <% end %>
+   <% end %>
+  </tbody>
+  </table>

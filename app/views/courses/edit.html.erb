@@ -1,0 +1,10 @@
+<div class="container">
+  <%=bootstrap_form_for course, remote: true, authenticity_token: true, data: { type: :script } do |f| %>
+    <%= f.url :icon_url, placeholder: "Icon" %>
+    <%= f.text_field :name, placeholder: "Course Name" %>
+    <%= f.text_field :location, placeholder: "Location" %>
+    <%= f.text_field :description, placeholder: "Description" %>
+    <%= f.text_field :class_hours, placeholder: "Class Hours" %>
+    <%= f.submit "Edit Course", class: "btn btn-warning" %>
+  <% end %>
+</div>

@@ -1,3 +1,6 @@
+@import "font-awesome";
+@import "bootstrap";
+
 body {
     margin: 0 auto;
     padding: 0;
@@ -11,7 +14,7 @@ body {
    }
 
    img {
-    margin-bottom: -30px;
+    margin-bottom: -43px;
     margin-left: -20px;
    }
   
@@ -34,24 +37,47 @@ body {
   .form-control-dark {
     color: #fff;
     background-color: white;
-    width: 400px;
+    width: 300px;
     border-color: rgba(255, 255, 255, 1);
-    margin-top: -14px;
+    margin-top: -8px;
+    margin-left: 280px;
   }
-  
-  .form-control-dark:focus {
-    border-color: transparent;
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 1);
+
+  .navbar-nav {
+    display: inline-block;
+    text-align: right;
+    margin: 0 auto;
+    list-style-type: none;
+    position: absolute;
+    top: 10px;
+    right: 400px;
+  }
+
+  .navbar-nav .nav-item.dropdown {
+    display: inline-block;
+  }
+
+  .navbar-nav .nav-item.dropdown .nav-link {
+    display: inline-block;
+  }
+
+  .nav-link .dropdown-toggle {
+    right: 20px;
   }
 
   /* Sidebar */
   
   .sidebar {
     position: fixed;
-    background-color: rgb(64, 165, 224);
-    padding: 30px 55px; /* Height of navbar */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100; /* Behind the navbar */
+    background-color: #40a5e0;
+    padding: 100px 40px; /* Height of navbar */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
   }
-  
+
   .sidebar-sticky {
     position: relative;
     top: 0;
@@ -60,11 +86,12 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   }
-  
+
   @supports ((position: -webkit-sticky) or (position: sticky)) {
     .sidebar-sticky {
       position: -webkit-sticky;
       position: sticky;
+      text-align: left;
     }
   }
 
@@ -72,7 +99,7 @@ body {
     list-style-type: none;
     margin-left: -26px;
   }
-  
+
   .sidebar .nav-link {
     font-family: "Gill Sans";
     font-size: 18px;
@@ -80,10 +107,15 @@ body {
     color: black;
     text-decoration: none;
   }
+
+   /* Content */
   
-  /* Content */
-  
-  [role="main"] {
-    padding-top: 50px; /* Space for fixed navbar */
+   [role="main"] {
+    padding-top: 64px; 
+    height: 100vh; /* Space for fixed navbar */
   }
+
+
+
+
   

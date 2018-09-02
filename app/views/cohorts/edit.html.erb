@@ -1,0 +1,11 @@
+<div class="container">
+  <%=bootstrap_form_for cohort, remote: true, authenticity_token: true, data: { type: :script } do |f| %>
+    <%= f.url :icon_url, placeholder: "Icon" %>
+    <%= f.text_field :name, placeholder: "Cohort Name" %>
+    <%= f.hidden_field :course_id, value: params[:course_id] %>
+    <%= f.collection_select(:teacher_id, teachers, :id, :full_name, prompt: true) %>
+    <%= f.text_field :start_date, placeholder: "MM/DD/YYYY" %>
+    <%= f.text_field :end_date, placeholder: "MM/DD/YYYY" %>
+    <%= f.submit "Edit Cohort", class: "btn btn-warning" %>
+  <% end %>
+</div>

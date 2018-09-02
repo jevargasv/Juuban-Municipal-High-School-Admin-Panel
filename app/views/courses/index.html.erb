@@ -1,1 +1,34 @@
+<h3 class="course-table"> Course Roster </h3>
+ <table class="table table-hover">
+  <thead>
+   <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Icon</th>
+    <th scope="col">Course Name</th>
+    <th scope="col">Location</th>
+    <th scope="col">Description</th>
+    <th scope="col">Class Hours</th>
+    <th>View<th>
+    <th>Add</th>
+    <th>Edit</th>
+    <th>Delete</th>
+   </tr>
+  </thead>
+  <tbody>
+   <% @courses.each do |course| %>
+    <tr>
+     <td scope="row"><%= course.id %></td>
+     <td><%= course.icon_url %></td>
+     <td><%= course.name %></td>
+     <td><%= course.location %></td>
+     <td><%= course.description %></td>
+     <td><%= course.class_hours %></td>
+     <td><%= link_to("View", "/courses/<%=course.id%>") %></td>
+     <td><%= link_to("Add", "/courses/new") %></td>
+     <td><%= link_to("Edit", "/courses/<%course.id%>/edit") %></td>
+     <td><%= link_to("Delete", course_path(@course), method: :delete, data: {confirm: 'Are you certain about deleting this course?'} %></td>
+    </tr>
+   <% end %>
+  </tbody>
+  </table>
 
