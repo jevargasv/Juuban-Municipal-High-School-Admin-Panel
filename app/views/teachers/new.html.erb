@@ -1,0 +1,19 @@
+<div class="container">
+  <%=bootstrap_form_for teacher, remote: true, authenticity_token: true, data: { type: :script } do |f| %>
+    <%= f.url :photo_url, placeholder: "Photo" %>
+    <%= f.text_field :first_name, placeholder: "First Name" %>
+    <%= f.text_field :last_name, placeholder: "Last Name" %>
+    <%= f.number_field :age, placeholder: "Age" %>
+    <%= f.text_field :date_of_birth, placeholder: "Month Date, Year" %>
+    <%= f.radio_button :fair, "true", label: "Yes", inline: true %>
+    <%= f.radio_button :fair, "false", label: "No", inline: true %>
+    <%= f.number_field :salary, placeholder: "Salary" %>
+    <%= f.text_field :education, placeholder: "Education" %>
+    <%= f.text_field :username, placeholder: "Username" %>
+    <%= f.fields_for :user do |p| %>
+        <%= p.text_field :email, placeholder: "E-mail" %>
+        <%= p.password_field :password, placeholder: "Password" %>
+    <% end %>
+    <%= f.submit "Add Teacher", class: "btn btn-success" %>
+  <% end %>
+</div>

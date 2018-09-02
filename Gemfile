@@ -74,3 +74,17 @@ gem 'rake', '~> 12.3.1'
 # Authentication and cookies
 
 gem 'devise', '~> 4.5.0'
+
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
+
+gem 'railties', '~> 5.2', '>= 5.2.1'
+
+gem 'sprockets-rails', '~> 3.2.1'
+
+gem 'popper_js', '~> 1.9', '>= 1.9.9'
+
+gem 'jquery-rails', '~> 4.3.3' 
+
+gem 'jquery-easing-rails', '~> 0.0.2'
+
+gem 'bootstrap_form', '~> 2.3'
