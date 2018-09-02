@@ -30,7 +30,7 @@ class GradesController < ApplicationController
   def update
     @grade = Grade.find(params[:id])
     if @grade.update(grade_params)
-      flash[:alert] = "Grade for '#{@grade.student.full_name}' has been successfully updated to roster!"
+      flash[:notice] = "Grade for '#{@grade.student.full_name}' has been successfully updated to roster!"
       redirect_to '/grades/#{:id}'
     else
       render 'edit'
@@ -40,7 +40,7 @@ class GradesController < ApplicationController
   def destroy
     @grade = Grade.find(params[:id])
     @grade.destroy
-    flash[:warning] = "Grade for '#{@grade.student.full_name}' has been successfully deleted to roster!"
+    flash[:alert] = "Grade for '#{@grade.student.full_name}' has been successfully deleted to roster!"
     redirect_to '/grades'
   end
 

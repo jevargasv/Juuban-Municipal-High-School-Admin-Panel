@@ -31,7 +31,7 @@ class CohortsController < ApplicationController
   def update
     @cohort = Cohort.find(params[:id])
     if @cohort.update(cohort_params)
-      flash[:alert] = "Cohort '#{@cohort.name}' has been successfully updated to roster!"
+      flash[:notice] = "Cohort '#{@cohort.name}' has been successfully updated to roster!"
       redirect_to '/cohorts/#{:id}'
     else
       render 'edit'
@@ -41,7 +41,7 @@ class CohortsController < ApplicationController
   def destroy
     @cohort = Cohort.find(params[:id])
     @cohort.destroy
-    flash[:warning] = "Cohort '#{@cohort.name}' has been successfully deleted to roster!"
+    flash[:alert] = "Cohort '#{@cohort.name}' has been successfully deleted to roster!"
     redirect_to '/cohorts'
   end
 
