@@ -6,9 +6,6 @@ class CreateStudents < ActiveRecord::Migration[5.2]
       t.integer :age
       t.string :date_of_birth
       t.string :year
-      t.string :photo_url
-      t.string :email
-      t.boolean :good
 
       t.timestamps
     end

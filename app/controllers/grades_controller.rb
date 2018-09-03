@@ -1,5 +1,4 @@
 class GradesController < ApplicationController
-  before_action :authenticate_user!
   
   def index
     @grades = Grade.all
@@ -11,27 +10,25 @@ class GradesController < ApplicationController
 
   def create
     @grade = Grade.new(grade_params)
+    @cohort = @grades.cohort
+    @student = @grades.student
     if @grade.save
-      flash[:success] = "Grade for '#{@grade.student.full_name}' has been successfully added to roster!"
-      redirect_to '/grades'
+      redirect_to '/cohorts'
     else
       render 'new'
     end
   end
 
   def show
-    @grade = Grade.find(params[:id])
   end
 
   def edit
-    @grade = Grade.find(params[:id])
   end
 
   def update
     @grade = Grade.find(params[:id])
     if @grade.update(grade_params)
-      flash[:notice] = "Grade for '#{@grade.student.full_name}' has been successfully updated to roster!"
-      redirect_to '/grades/#{:id}'
+      redirect_to cohorts_path
     else
       render 'edit'
     end
@@ -40,7 +37,6 @@ class GradesController < ApplicationController
   def destroy
     @grade = Grade.find(params[:id])
     @grade.destroy
-    flash[:alert] = "Grade for '#{@grade.student.full_name}' has been successfully deleted to roster!"
     redirect_to '/grades'
   end
 

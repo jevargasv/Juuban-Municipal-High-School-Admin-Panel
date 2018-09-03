@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   root 'pages#index'
-  
+ 
   resources :teachers
   resources :courses
   resources :students

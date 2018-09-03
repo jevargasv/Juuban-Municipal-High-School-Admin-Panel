@@ -67,13 +67,8 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'rails-i18n', '~> 5.1.1'
 
 # Fake information generator
-gem 'faker', '~> 1.9.1'
 
 gem 'rake', '~> 12.3.1'
-
-# Authentication and cookies
-
-gem 'devise', '~> 4.5.0'
 
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.4'
 

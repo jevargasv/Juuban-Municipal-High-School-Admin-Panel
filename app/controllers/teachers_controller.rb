@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
   def index
     @teachers = Teacher.all
@@ -13,7 +13,6 @@ class TeachersController < ApplicationController
     @teacher = Teacher.create(teacher_params)
     @teacher.build_user(email: params[:email], password: params[:password]).save
     if @teacher.save
-      flash[:success] = "Teacher '#{@teacher.full_name}' has been successfully added to roster!"
       redirect_to '/teachers'
     else
       render 'new'
@@ -21,18 +20,15 @@ class TeachersController < ApplicationController
   end
 
   def show
-    @teacher = Teacher.find(params[:id])
   end
 
   def edit
-    @teacher = Teacher.find(params[:id])
   end
 
   def update
     @teacher = Teacher.find(params[:id])
     if @teacher.update(teacher_params)
-      flash[:notice] = "Teacher '#{@teacher.full_name}' has been successfully updated to roster!"
-      redirect_to '/teachers/#{@teacher.id}'
+      redirect_to teachers_path
     else
       render 'edit'
     end
@@ -41,11 +37,14 @@ class TeachersController < ApplicationController
   def destroy
     @teacher = Teacher.find(params[:id])
     @teacher.destroy
-    flash[:alert] = "Teacher '#{@teacher.full_name}' has been successfully deleted to roster!"
     redirect_to '/teachers'
   end
 
   private
+
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
+  end
 
   def teacher_params
     params.require(:teacher).permit(:first_name, :last_name, :age, :date_of_birth, :photo_url, :email, :fair, :salary, :education, :subject)

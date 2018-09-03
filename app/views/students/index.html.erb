@@ -1,39 +1,35 @@
-<h3 class="student-table"> Student Roster </h3>
+
+<div class="content-wrapper">
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item active">Students</li>
+  </ol>
+
+<h3 class="student-table"> Student Roster </h3> <%= link_to "Add New Student", new_student_path, class: 'btn btn-success' %>
  <table class="table table-hover">
-  <thead>
    <tr>
-    <th scope="col">ID</th>
-    <th scope="col">Photo</th>
-    <th scope="col">First Name</th>
-    <th scope="col">Last Name</th>
-    <th scope="col">Age</th>
-    <th scope="col">Date of Birth</th>
-    <th scope="col">Year</th>
-    <th scope="col">E-mail</th>
-    <th scope="col">Good</th>
-    <th>View</th>
-    <th>Add</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <td scope="col">ID</td>
+    <td scope="col">First Name</td>
+    <td scope="col">Last Name</td>
+    <td scope="col">Age</td>
+    <td scope="col">Date of Birth</td>
+    <td scope="col">Year</td>
+    <td></td>
+    <td></td>
    </tr>
-  </thead>
-  <tbody>
    <% @students.each do |student| %>
     <tr>
      <td scope="row"><%= student.id %></td>
-     <td><%= student.photo_url %></td>
      <td><%= student.first_name %></td>
      <td><%= student.last_name %></td>
      <td><%= student.age %></td>
      <td><%= student.date_of_birth %></td>
      <td><%= student.year %></td>
-     <td><%= student.email %></td>
-     <td><%= student.good %></td>
-     <td><%= link_to("View", "/students/<%=student.id%>") %></td>
-     <td><%= link_to("Add", "/students/new") %></td>
-     <td><%= link_to("Edit", "/students/<%student.id%>/edit") %></td>
-     <td><%= link_to("Delete", student_path(@student), method: :delete, data: {confirm: 'Are you certain about deleting this student?'} %></td>
+     <td><%= link_to("Edit", edit_student_path(student), class: 'btn btn-warning') %></td>
+     <td><%= link_to "Delete", student, method: :delete, data: {confirm: 'Are you certain about deleting this student?'}, class: 'btn btn-danger' %></td>
     </tr>
    <% end %>
-  </tbody>
-  </table>
+</table>
+</div>
+</div>

@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
     @courses = Course.all
@@ -12,7 +12,6 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      flash[:success] = "Course '#{@course.name}' has been successfully added to roster!"
       redirect_to '/courses'
     else
       render 'new'
@@ -20,32 +19,31 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
-    @cohorts = Cohort.where(course_id: params[:id])
+    @cohorts = @course.cohorts
   end
 
   def edit
-    @course = Course.find(params[:id])
+    @cohorts = @course.cohorts
   end
 
   def update
-    @course = Course.find(params[:id])
     if @course.update(course_params)
-      flash[:notice] = "Course '#{@course.name}' has been successfully updated to roster!"
-      redirect_to '/courses/#{:id}'
+      redirect_to courses_path
     else
       render 'edit'
     end
   end
 
   def destroy
-    @course = Course.find(params[:id])
     @course.destroy
-    flash[:alert] = "Course '#{@course.name}' has been successfully deleted to roster!"
     redirect_to '/courses'
   end
 
   private
+
+  def set_course
+    @course = Course.find(params[:id])
+  end
 
   def course_params
     params.require(:course).permit(:name, :location, :description, :icon_url, :class_hours)

@@ -1,14 +1,12 @@
 <div class="container">
-  <%=bootstrap_form_for student, remote: true, authenticity_token: true, data: { type: :script } do |f| %>
-    <%= f.url :photo_url, placeholder: "Photo" %>
+ <div class="card-body">
+  <%=bootstrap_form_for @student do |f| %>
     <%= f.text_field :first_name, placeholder: "First Name" %>
     <%= f.text_field :last_name, placeholder: "Last Name" %>
     <%= f.number_field :age, placeholder: "Age" %>
     <%= f.text_field :date_of_birth, placeholder: "Month Date, Year" %>
     <%= f.text_field :year, placeholder: "Year" %>
-    <%= p.text_field :email, placeholder: "E-mail" %>
-    <%= f.radio_button :good, "true", label: "Yes", inline: true %>
-    <%= f.radio_button :good, "false", label: "No", inline: true %>
     <%= f.submit "Edit Student", class: "btn btn-warning" %>
   <% end %>
+ </div>
 </div>
