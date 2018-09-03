@@ -3,7 +3,6 @@
   <thead>
    <tr>
     <th scope="col">ID</th>
-    <th scope="col">Icon</th>
     <th scope="col">Cohort Name</th>
     <th scope="col">Course Name</th>
     <th scope="col">Teacher</th>
@@ -21,7 +20,6 @@
    <% @teacher = Teacher.find(cohort.teacher_id) %>
     <tr>
      <td scope="row"><%= cohort.id %></td>
-     <td><%= cohort.icon_url %></td>
      <td><%= cohort.name %></td>
      <td><%= @course.name %></td>
      <td><%= @teacher.first_name %> <%= @teacher.last_name %></td>

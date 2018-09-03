@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_student, only: [:show, :edit, :update, :destroy]
   
   def index
     @students = Student.all
@@ -12,7 +12,6 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      flash[:success] = "Student '#{@student.full_name}' has been successfully added to roster!"
       redirect_to '/students'
     else
       render 'new'
@@ -20,31 +19,29 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id])
   end
 
   def edit
-    @student = Student.find(params[:id])
   end
 
   def update
-    @student = Student.find(params[:id])
     if @student.update(student_params)
-      flash[:notice] = "Student '#{@student.full_name}' has been successfully updated to roster!"
-      redirect_to '/students/#{:id}'
+      redirect_to students_path
     else
       render 'edit'
     end
   end
 
   def destroy
-    @student = Student.find(params[:id])
     @student.destroy
-    flash[:alert] = "Student '#{@student.full_name}' has been successfully deleted to roster!"
     redirect_to '/students'
   end
 
   private
+
+  def set_student
+    @student = Student.find(params[:id])
+  end
 
   def student_params
     params.require(:student).permit(:first_name, :last_name, :age, :date_of_birth, :year, :photo_url, :email, :good)

@@ -4,7 +4,6 @@ class CreateCohorts < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :start_date
       t.string :end_date
-      t.string :icon_url
       t.references :course, index: true
       t.references :teacher, index: true
 

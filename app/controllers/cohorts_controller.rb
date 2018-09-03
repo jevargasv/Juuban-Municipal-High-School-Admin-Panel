@@ -1,5 +1,5 @@
 class CohortsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :set_cohort, only: [:new, :edit, :update, :add_student, :destroy]
   
   def index
     @cohorts = Cohort.all
@@ -12,16 +12,15 @@ class CohortsController < ApplicationController
   def create
     @cohort = Cohort.new(cohort_params)
     if @cohort.save
-      flash[:success] = "Cohort '#{@cohort.name}' successfully added to roster!"
-      redirect_to '/cohorts'
+      redirect_to '/courses/#{course.id}'
     else
       render 'new'
     end
   end
 
   def show
-    @cohort = Cohort.find(params[:id])
-    @course = Course.find_by(id: @cohort.course_id)
+    @course = @cohort.course
+    @students = @cohort.students
   end
 
   def edit
@@ -31,21 +30,27 @@ class CohortsController < ApplicationController
   def update
     @cohort = Cohort.find(params[:id])
     if @cohort.update(cohort_params)
-      flash[:notice] = "Cohort '#{@cohort.name}' has been successfully updated to roster!"
-      redirect_to '/cohorts/#{:id}'
+      redirect_to "/courses/#{course.id}"
     else
       render 'edit'
     end
   end
 
+  def add_student
+    Grade.create!(student_id: params[student_id], cohort_id: @cohort_id)
+  end
+
   def destroy
-    @cohort = Cohort.find(params[:id])
     @cohort.destroy
-    flash[:alert] = "Cohort '#{@cohort.name}' has been successfully deleted to roster!"
-    redirect_to '/cohorts'
+    course = @cohort.course
+    redirect_to '/courses/#{course.id}'
   end
 
   private
+
+  def set_cohort
+    @cohort = Cohort.find(params[:id])
+  end
 
   def cohort_params
     params.require(:cohort).permit(:name, :start_date, :end_date, :icon_url, :course, :teacher)
