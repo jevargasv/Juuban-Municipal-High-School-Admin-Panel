@@ -1,20 +1,24 @@
-<h3 class="cohort-table"> Cohort Roster </h3>
+<div id="content-wrapper">
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item active">Cohorts</li>
+  </ol>
+  <br>
+<center><h3 class="cohort-table"> Cohort Roster </h3>
+  <br>
  <table class="table table-hover">
-  <thead>
    <tr>
-    <th scope="col">ID</th>
-    <th scope="col">Cohort Name</th>
-    <th scope="col">Course Name</th>
-    <th scope="col">Teacher</th>
-    <th scope="col">Start Date</th>
-    <th scope="col">End Date</th>
-    <th>View<th>
-    <th>Add</th>
-    <th>Edit</th>
-    <th>Delete</th>
+    <td width="20%" scope="col">ID</td>
+    <td width="20%" scope="col">Cohort Name</td>
+    <td width="20%" scope="col">Course Name</td>
+    <td width="20%" scope="col">Teacher</td>
+    <td width="20%" scope="col">Start Date</td>
+    <td width="20%" scope="col">End Date</td>
+    <td width="20%"></td>
+    <td width="20%"></td>
+    <td width="20%"></td>
    </tr>
-  </thead>
-  <tbody>
    <% @cohorts.each do |cohort| %>
    <% @course = Course.find(cohort.course_id) %>
    <% @teacher = Teacher.find(cohort.teacher_id) %>
@@ -23,15 +27,22 @@
      <td><%= cohort.name %></td>
      <td><%= @course.name %></td>
      <td><%= @teacher.first_name %> <%= @teacher.last_name %></td>
-     <td><%= cohort.start_date %><td>
-     <td><%= cohort.end_date %><td>
-     <td><%= link_to("View", "/cohorts/<%=cohort.id%>") %></td>
-     <td><%= link_to("Add", "/cohorts/new") %></td>
-     <td><%= link_to("Edit", "/cohorts/<%cohort.id%>/edit") %></td>
-     <td><%= link_to("Delete", cohort_path(@cohort), method: :delete, data: {confirm: 'Are you certain about deleting this cohort?'} %></td>
+     <td><%= cohort.start_date %></td>
+     <td><%= cohort.end_date %></td>
+     <td><%= link_to "View", cohort_path(cohort), class: 'btn btn-info' %></td>
+     <td><%= link_to("Edit", edit_cohort_path(cohort), class: 'btn btn-warning') %></td>
+     <td><%= link_to "Delete", cohort, method: :delete, data: {confirm: 'Are you certain about deleting this cohort?'}, class: 'btn btn-danger' %></td>
     </tr>
    <% end %>
-  </tbody>
   </table>
+  <br>
+  <br>
+<%= link_to "Add New Cohort", new_cohort_path, class: 'btn btn-success' %>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+</div></center>
  
 

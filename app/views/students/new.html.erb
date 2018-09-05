@@ -1,12 +1,27 @@
+<div id="content-wrapper">
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item">Students</li>
+    <li class="breadcrumb-item active">Add</li>
+  </ol> 
+
 <div class="container">
- <div class="card-body">
-  <%=bootstrap_form_for @student do |f| %>
-    <%= f.text_field :first_name, placeholder: "First Name" %>
-    <%= f.text_field :last_name, placeholder: "Last Name" %>
-    <%= f.number_field :age, placeholder: "Age" %>
-    <%= f.text_field :date_of_birth, placeholder: "Month Date, Year" %>
-    <%= f.text_field :year, placeholder: "Year" %>
-    <%= f.submit "Add Student", class: "btn btn-success" %>
-  <% end %>
- </div>
+  <div class="card w-100">
+   <div class="card-body">
+   <%=bootstrap_form_for @student do |f| %>
+     <%= f.hidden_field :student_id, value: params[:id] %>
+     <%= f.text_field :first_name, placeholder: "First Name" %>
+     <%= f.text_field :last_name, placeholder: "Last Name" %>
+     <%= f.number_field :age, placeholder: "Age" %>
+     <%= f.text_field :date_of_birth, placeholder: "Month Date, Year" %>
+     <%= f.text_field :year, placeholder: "Year" %>
+     <br>
+     <%= f.submit "Add Student", class: "btn btn-success" %>
+   <% end %>
+   </div>
+  </div>
+</div> 
+<br>
+</div>
 </div>

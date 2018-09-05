@@ -1,11 +1,27 @@
+<div id="content-wrapper">
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item">Cohorts</li>
+    <li class="breadcrumb-item active">Edit</li>
+  </ol> 
+
 <div class="container">
-  <%=bootstrap_form_for cohort, remote: true, authenticity_token: true, data: { type: :script } do |f| %>
-    <%= f.url :icon_url, placeholder: "Icon" %>
+  <div class="card w-100">
+   <div class="card-body">
+  <%=bootstrap_form_for @cohort do |f| %>
+    <%= f.hidden_field :cohort_id, value: params[:id] %>
     <%= f.text_field :name, placeholder: "Cohort Name" %>
-    <%= f.hidden_field :course_id, value: params[:course_id] %>
-    <%= f.collection_select(:teacher_id, teachers, :id, :full_name, prompt: true) %>
+    <%= f.select :course_id, Course.all.map{|x| [x.name, x.id]} %>
+    <%= f.select :teacher_id, Teacher.all.map{|x| [x.first_name + ' ' + x.last_name, x.id]} %>
     <%= f.text_field :start_date, placeholder: "MM/DD/YYYY" %>
     <%= f.text_field :end_date, placeholder: "MM/DD/YYYY" %>
-    <%= f.submit "Edit Cohort", class: "btn btn-warning" %>
+    <br>
+    <%= f.submit "Edit Cohort", class: "btn btn-warning" %> &nbsp;&nbsp; <%= link_to("Go Back", cohorts_path, class: 'btn btn-secondary') %>
   <% end %>
+   </div>
+  </div>
+</div>
+<br>
+</div>
 </div>

@@ -1,10 +1,12 @@
+<div id="content-wrapper">
 <div class="container-fluid">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
     <li class="breadcrumb-item active">Teachers</li>
   </ol>
-
-<h3 class="teacher-table"> Teacher Roster </h3> <%= link_to "Add New Teacher", new_teacher_path, class: 'btn btn-success' %>
+  <br>
+<center><h3 class="teacher-table"> Teacher Roster </h3>
+  <br>
  <table class="table table-hover">
    <tr>
     <td scope="col">ID</td>
@@ -17,6 +19,7 @@
     <td scope="col">Subject</td>
     <td></td>
     <td></td>
+    <td></td>
    </tr>
    <% @teachers.each do |teacher| %>
      <td scope="row"><%= teacher.id %></td>
@@ -27,9 +30,18 @@
      <td><%= teacher.salary %></td>
      <td><%= teacher.education %></td>
      <td><%= teacher.subject %></td>
+     <td><%= link_to "View", teacher_path(teacher), class: 'btn btn-info' %></td>
      <td><%= link_to("Edit", edit_teacher_path(teacher), class: 'btn btn-warning') %></td>
      <td><%= link_to "Delete", teacher, method: :delete, data: {confirm: 'Are you certain about deleting this teacher?'}, class: 'btn btn-danger' %></td>
     </tr>
    <% end %>
   </table>
+  <br>
+  <br>
+<%= link_to "Add New Teacher", new_teacher_path, class: 'btn btn-success' %>
+  <br>
+  <br>
+  <br>
+  <br>
 </div>
+</div></center>

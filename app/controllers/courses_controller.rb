@@ -12,18 +12,16 @@ class CoursesController < ApplicationController
   def create
     @course = Course.new(course_params)
     if @course.save
-      redirect_to '/courses'
+      redirect_to courses_path
     else
       render 'new'
     end
   end
 
   def show
-    @cohorts = @course.cohorts
   end
 
   def edit
-    @cohorts = @course.cohorts
   end
 
   def update
@@ -36,7 +34,7 @@ class CoursesController < ApplicationController
 
   def destroy
     @course.destroy
-    redirect_to '/courses'
+    redirect_to courses_path
   end
 
   private

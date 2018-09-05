@@ -1,7 +1,6 @@
-class CreateGrades < ActiveRecord::Migration[5.2]
+class CreateStudentCohorts < ActiveRecord::Migration[5.2]
   def change
-    create_table :grades do |t|
-      t.boolean :pass
+    create_table :student_cohorts do |t|
       t.references :cohort, index: true
       t.references :student, index: true
 

@@ -1,6 +1,6 @@
 class CohortsController < ApplicationController
-  before_action :set_cohort, only: [:new, :edit, :update, :add_student, :destroy]
-  
+  before_action :set_cohort, only: [:show, :edit, :update, :destroy]
+
   def index
     @cohorts = Cohort.all
   end
@@ -19,8 +19,9 @@ class CohortsController < ApplicationController
   end
 
   def show
-    @course = @cohort.course
-    @students = @cohort.students
+    @cohort = Cohort.find(params[:id])
+    @course = Course.find_by(id: @cohort.course_id)
+    @students = StudentCohort.where(cohort_id: @cohort.id)
   end
 
   def edit
@@ -34,10 +35,6 @@ class CohortsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  def add_student
-    Grade.create!(student_id: params[student_id], cohort_id: @cohort_id)
   end
 
   def destroy

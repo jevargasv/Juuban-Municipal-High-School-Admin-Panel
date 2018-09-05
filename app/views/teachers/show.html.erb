@@ -1,19 +1,33 @@
-<h3 class="teacher-profile"> "#{@teacher.full_name}" </h3>
- <div class="container">
+<div id="content-wrapper">
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item">Teachers</li>
+    <li class="breadcrumb-item active">View</li>
+  </ol> 
+ 
+<div class="container">
+ <div class="card w-100">
   <div class="card-body">
-   <h3> ID <%= @teacher.id %> </h3>
+   <h3 class="student-profile"> <%= @teacher.full_name %> </h3>
    <br>
-   <h3> Age <%= @teacher.age %> </h3>
+   <h3> ID:  <%= @teacher.id %> </h3>
    <br>
-   <h3> Date of Birth <%= @teacher.date_of_birth %> </h3>
+   <h3> Age:  <%= @teacher.age %> </h3>
    <br>
-   <h3> Salary <%= @teacher.salary %> </h3>
+   <h3> Date of Birth:  <%= @teacher.date_of_birth %> </h3>
    <br>
-   <h3> Education <%= @teacher.education %> </h3>
+   <h3> Salary:  <%= @teacher.salary %> </h3>
    <br>
-   <h3> Subject <%= @teacher.subject %> </h3>
+   <h3> Education:  <%= @teacher.education %> </h3>
    <br>
-   <a href"/teachers"><h3>Back to Teachers</h3></a>
+   <h3> Subject:  <%= @teacher.subject %> </h3>
+   <br>
+   <%= link_to("Go Back", teachers_path, class: 'btn btn-secondary') %>
    <br>
   </div>
  </div>
+</div>
+<br>
+</div>
+</div>
