@@ -1,22 +1,23 @@
-
-<div class="content-wrapper">
+<div id="content-wrapper">
 <div class="container-fluid">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
     <li class="breadcrumb-item active">Students</li>
   </ol>
-
-<h3 class="student-table"> Student Roster </h3> <%= link_to "Add New Student", new_student_path, class: 'btn btn-success' %>
+  <br>
+<center><h3 class="student-table"> Student Roster </h3>
+  <br>
  <table class="table table-hover">
    <tr>
-    <td scope="col">ID</td>
-    <td scope="col">First Name</td>
-    <td scope="col">Last Name</td>
-    <td scope="col">Age</td>
-    <td scope="col">Date of Birth</td>
-    <td scope="col">Year</td>
-    <td></td>
-    <td></td>
+    <td width="20%" scope="col">ID</td>
+    <td width="20%" scope="col">First Name</td>
+    <td width="20%" scope="col">Last Name</td>
+    <td width="20%" scope="col">Age</td>
+    <td width="20%" scope="col">Date of Birth</td>
+    <td width="20%" scope="col">Year</td>
+    <td width="20%"></td>
+    <td width="20%"></td>
+    <td width="20%"></td>
    </tr>
    <% @students.each do |student| %>
     <tr>
@@ -26,10 +27,18 @@
      <td><%= student.age %></td>
      <td><%= student.date_of_birth %></td>
      <td><%= student.year %></td>
+     <td><%= link_to "View", student_path(student), class: 'btn btn-info' %></td>
      <td><%= link_to("Edit", edit_student_path(student), class: 'btn btn-warning') %></td>
      <td><%= link_to "Delete", student, method: :delete, data: {confirm: 'Are you certain about deleting this student?'}, class: 'btn btn-danger' %></td>
     </tr>
    <% end %>
 </table>
+<br>
+<br>
+<%= link_to "Add New Student", new_student_path, class: 'btn btn-success' %>
+<br>
+<br>
+<br>
+<br>
 </div>
-</div>
+</div></center>

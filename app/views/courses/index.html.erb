@@ -1,11 +1,12 @@
-<div class="content-wrapper">
+<div id="content-wrapper">
 <div class="container-fluid">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
     <li class="breadcrumb-item active">Courses</li>
   </ol>
-
-<h3 class="course-table"> Course Roster </h3>
+  <br>
+<center><h3 class="course-table"> Course Roster </h3>
+  <br>
  <table class="table table-hover">
    <tr>
     <td scope="col">ID</td>
@@ -13,9 +14,9 @@
     <td scope="col">Location</td>
     <td scope="col">Description</td>
     <td scope="col">Class Hours</td>
-    <td></th>
-    <td></th>
-    <td></th>
+    <td></td>
+    <td></td>
+    <td></td>
    </tr>
    <% @courses.each do |course| %>
     <tr>
@@ -24,12 +25,19 @@
      <td><%= course.location %></td>
      <td><%= course.description %></td>
      <td><%= course.class_hours %></td>
-     <td><%= link_to "Add", new_course_path %></td>
-     <td><%= link_to "Edit", edit_course_path(course) %></td>
-     <td><%= link_to "Delete", course, method: :delete, data: {confirm: 'Are you certain about deleting this course?'} %></td>
+     <td><%= link_to "View", course_path(course), class: 'btn btn-info' %></td>
+     <td><%= link_to("Edit", edit_course_path(course), class: 'btn btn-warning') %></td>
+     <td><%= link_to "Delete", course, method: :delete, data: {confirm: 'Are you certain about deleting this course?'}, class: 'btn btn-danger' %></td>
     </tr>
    <% end %>
   </table>
-<div>
-<div>
+  <br>
+  <br>
+  <%= link_to "Add New Course", new_course_path, class: 'btn btn-success' %>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+</div></center>
 

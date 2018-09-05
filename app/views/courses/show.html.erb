@@ -1,17 +1,29 @@
-<h3 class="course-profile"> "#{@course.name}" </h3>
- <div class="container">
+<div id="content-wrapper">
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item">Courses</li>
+    <li class="breadcrumb-item active">View</li>
+  </ol> 
+ 
+<div class="container">
+ <div class="card w-100">
   <div class="card-body">
-   <h3> ID <%= @course.id %> </h3>
+   <h3 class="course-profile"> <%= @course.name %> </h3>
    <br>
-   <h3> Icon <%= @course.icon_url %> </h3>
+   <h3> ID: <%= @course.id %> </h3>
    <br>
-   <h3> Location <%= @course.location %> </h3>
+   <h3> Location: <%= @course.location %> </h3>
    <br>
-   <h3> Description <%= @course.description %> </h3>
+   <h3> Description: <%= @course.description %> </h3>
    <br>
-   <h3> Class Hours <%= @course.class_hours %> </h3>
+   <h3> Class Hours: <%= @course.class_hours %> </h3>
    <br>
-   <a href"/courses"><h3>Back to Courses</h3></a>
+   <%= link_to("Go Back", courses_path, class: 'btn btn-secondary') %> &nbsp;&nbsp; <%= link_to "Edit", edit_course_path(@course), class: 'btn btn-warning' %>
    <br>
   </div>
  </div>
+</div>
+<br>
+</div>
+</div>

@@ -1,74 +1,71 @@
-<h3 class="cohort-profile"> "#{@cohort.name}" </h3>
- <% @cohorts.each do |cohort| %>
- <% @course = Course.find(cohort.course_id) %>
- <% @teacher = Teacher.find(cohort.teacher_id) %>
-  <div class="container">
+<div id="content-wrapper">
+<div class="container-fluid">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+    <li class="breadcrumb-item">Cohorts</li>
+    <li class="breadcrumb-item active">View</li>
+  </ol> 
+  
+<% @teacher = Teacher.find(@cohort.teacher_id) %>
+<div class="container">
+  <div class="card w-100">
    <div class="card-body">
-    <h3> ID <%= cohort.id %> </h3>
+    <h3 class="cohort-profile"> <%= @cohort.name %> </h3>
     <br>
-    <h3> Icon <%= cohort.icon_url %> </h3>
+    <h3> ID:  <%= @cohort.id %> </h3>
     <br>
-    <h3> Course Name <%= @course.name %> </h3>
+    <h3> Course Name:  <%= @course.name %> </h3>
     <br>
-    <h3> Teacher <%= @teacher.first_name %><%= @teacher.last_name %> </h3>
+    <h3> Teacher:  <%= @teacher.first_name %> <%= @teacher.last_name %> </h3>
     <br>
-    <h3> Start Date <%= cohort.start_date %> </h3>
+    <h3> Start Date:  <%= @cohort.start_date %> </h3>
     <br>
-    <h3> End Date <%= cohort.end_date %> </h3>
+    <h3> End Date:  <%= @cohort.end_date %> </h3>
     <br>
-    <a href"/cohorts"><h3>Back to Cohorts</h3></a>
+    <%= link_to("Go Back", cohorts_path, class: 'btn btn-secondary') %> &nbsp;&nbsp; <%= link_to "Edit", edit_cohort_path(@cohort), class: 'btn btn-warning' %>
     <br>
    </div>
   </div>
- <% end %>
-
-<% if user_signed_in? && current_user.user_type_type == "Admin" || @cohort.teacher.id == current_user.user_type_type %> 
+</div>
+<br>
+<br>
 <div class="container">
- <%= bootstrap_form_for @grade, remote: true, authenticity_token: true, data: { type: :script }, layout: :inline do |f| %>
-    <%= f.collection_select(:student_id, @students_not_in_cohort, :id, :full_name, prompt: true) %>
-    <%= f.hidden_field :cohort_id, value: params[:id] %>
+  <div class="card w-100">
+   <div class="card-body">
+   <h3 class="student-cohort">Add Student to Cohort</h3>
+   <br>
+ <%= bootstrap_form_for cohort_path do |f| %>
+    <%= f.select :student_id, Student.all.map{|x| [x.first_name + ' ' + x.last_name, x.id]} %>
+    <%= f.number_field :age, placeholder: "Age" %>
+    <%= f.text_field :date_of_birth, placeholder: "Month Date, Year" %>
+    <%= f.text_field :year, placeholder: "Year" %>
+    <br>
     <%= f.submit "Add to Cohort", class: "btn btn-success" %> 
  <% end %>
+ <br>
+ <br>
+    </div>
+  </div>
 </div>
-<% end %>
-
- <h3 class="student-cohort-table"> Student Cohort Roster </h3>
- <table class="table table-hover">
-  <thead>
-   <tr>
-    <th scope="col">ID</th>
-    <th scope="col">Photo</th>
-    <th scope="col">Student</th>
-    <th scope="col">Year</th>
-    <th scope="col">Grade</th>
-    <th>Add Grade</th>
-    <th>Edit Grade</th>
-    <th>Delete Grade</th>
-   </tr>
-  </thead>
-  <tbody>
-   <% @students.each do |student| %>
-    <tr>
-     <td scope="row"><%= student.id %></td>
-     <td><%= student.photo %></td>
-     <td><%= student.first_name %> <%= student.last_name %></td>
-     <td><%= student.year %><td>
-     <% grade = student.grades.find_by(cohort_id: cohort.id) %>
-     <td>
-     <% if grade.pass == true %>
-       <%= "Pass" %>
-     <% elsif grade.pass == false %>
-       <%= "Fail" %>
-     <% else %>
-       <%= "No Grade Yet" %>
-     <% end %>
-     </td>
-     <% if user_signed_in? && current_user.user_type_type == "Admin" || @cohort.teacher.id == current_user.user_type_type %>
-     <td><%= link_to("Add Grade", "/grades/new") %></td>
-     <td><%= link_to("Edit Grade", "/grades/<%student.id%>/edit") %></td>
-     <td><%= link_to("Delete Grade", grade_path(grade), method: :delete, data: {confirm: 'Are you certain about deleting this grade?'} %></td>
-     <% end %>
-    </tr>
-   <% end %>
-  </tbody>
-  </table>
+<br>
+<br>
+<center><h3 class="student-cohort-table"> Student Cohort Roster </h3>
+<br>
+<table class="table table-hover">
+  <tr>
+    <td width="30%" scope="col">ID</td>
+    <td width="30%" scope="col">Student Name</td>
+    <td width="30%" scope="col">Age</td>
+    <td width="30%" scope="col">Date of Birth</td>
+    <td width="30%" scope="col">Year</td>
+  </tr>
+  <tr>
+  <% @students = StudentCohort.where(cohort_id: @cohort.id) %>
+     <td scope="row"><%= @student.id %></td>
+     <td><%= @student.first_name %> <%= @student.last_name %></td>
+     <td><%= @student.age %></td>
+     <td><%= @student.date_of_birth %></td>
+     <td><%= @student.year %></td>
+</table>
+</div>
+</div></center>
