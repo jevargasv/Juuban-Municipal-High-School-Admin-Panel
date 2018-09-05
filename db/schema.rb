@@ -10,59 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_174619) do
+ActiveRecord::Schema.define(version: 2018_08_23_153739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cohorts", force: :cascade do |t|
-    t.string "name"
-    t.string "start_date"
-    t.string "end_date"
-    t.bigint "course_id"
-    t.bigint "teacher_id"
+    t.string "name", null: false
+    t.string "start_date", null: false
+    t.string "end_date", null: false
+    t.integer "course_id", null: false
+    t.integer "teacher_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["course_id"], name: "index_cohorts_on_course_id"
-    t.index ["teacher_id"], name: "index_cohorts_on_teacher_id"
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "name"
-    t.string "location"
-    t.string "description"
-    t.string "class_hours"
+    t.string "name", null: false
+    t.string "location", null: false
+    t.string "description", null: false
+    t.string "class_hours", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "student_cohorts", force: :cascade do |t|
-    t.bigint "cohort_id"
-    t.bigint "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["cohort_id"], name: "index_student_cohorts_on_cohort_id"
-    t.index ["student_id"], name: "index_student_cohorts_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "age"
-    t.string "date_of_birth"
-    t.string "year"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.integer "age", null: false
+    t.string "date_of_birth", null: false
+    t.string "year", null: false
+    t.integer "cohort_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "teachers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "age"
-    t.string "date_of_birth"
-    t.string "salary"
-    t.string "education"
-    t.string "subject"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.integer "age", null: false
+    t.string "date_of_birth", null: false
+    t.string "salary", null: false
+    t.string "education", null: false
+    t.string "subject", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

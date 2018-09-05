@@ -1,10 +1,10 @@
 class CreateCourses < ActiveRecord::Migration[5.2]
   def change
     create_table :courses do |t|
-      t.string :name
-      t.string :location
-      t.string :description
-      t.string :class_hours
+      t.string :name, null: false
+      t.string :location, null: false
+      t.string :description, null: false
+      t.string :class_hours, null: false
 
       t.timestamps
     end

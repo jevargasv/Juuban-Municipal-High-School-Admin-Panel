@@ -12,7 +12,7 @@ class CohortsController < ApplicationController
   def create
     @cohort = Cohort.new(cohort_params)
     if @cohort.save
-      redirect_to '/courses/#{course.id}'
+      redirect_to '/cohorts'
     else
       render 'new'
     end
@@ -20,8 +20,7 @@ class CohortsController < ApplicationController
 
   def show
     @cohort = Cohort.find(params[:id])
-    @course = Course.find_by(id: @cohort.course_id)
-    @students = StudentCohort.where(cohort_id: @cohort.id)
+    @students = Student.where(cohort_id: @cohort.id)
   end
 
   def edit
@@ -31,7 +30,7 @@ class CohortsController < ApplicationController
   def update
     @cohort = Cohort.find(params[:id])
     if @cohort.update(cohort_params)
-      redirect_to '/courses/#{course.id}'
+      redirect_to '/cohorts'
     else
       render 'edit'
     end
@@ -39,8 +38,7 @@ class CohortsController < ApplicationController
 
   def destroy
     @cohort.destroy
-    course = @cohort.course
-    redirect_to '/courses/#{course.id}'
+    redirect_to '/cohorts'
   end
 
   private

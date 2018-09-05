@@ -1,5 +1,5 @@
 class Teacher < ApplicationRecord
-    belongs_to :cohort
+    has_many :courses
     
     def full_name
         "#{first_name} #{last_name}"

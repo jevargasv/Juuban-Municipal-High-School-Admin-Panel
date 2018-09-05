@@ -34,7 +34,7 @@
    <div class="card-body">
    <h3 class="student-cohort">Add Student to Cohort</h3>
    <br>
- <%= bootstrap_form_for cohort_path do |f| %>
+ <%= bootstrap_form_for @cohort do |f| %>
     <%= f.select :student_id, Student.all.map{|x| [x.first_name + ' ' + x.last_name, x.id]} %>
     <%= f.number_field :age, placeholder: "Age" %>
     <%= f.text_field :date_of_birth, placeholder: "Month Date, Year" %>
@@ -60,7 +60,7 @@
     <td width="30%" scope="col">Year</td>
   </tr>
   <tr>
-  <% @students = StudentCohort.where(cohort_id: @cohort.id) %>
+  <% @students = Student.where(cohort_id: @cohort.id) %>
      <td scope="row"><%= @student.id %></td>
      <td><%= @student.first_name %> <%= @student.last_name %></td>
      <td><%= @student.age %></td>

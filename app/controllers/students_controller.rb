@@ -19,14 +19,16 @@ class StudentsController < ApplicationController
   end
 
   def show
+    @student = Student.find(params[:id])
   end
 
   def edit
+    @student = Student.find(params[:id])
   end
 
   def update
     if @student.update(student_params)
-      redirect_to students_path
+      redirect_to '/students'
     else
       render 'edit'
     end
@@ -44,7 +46,7 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :age, :date_of_birth, :year)
+    params.require(:student).permit(:first_name, :last_name, :age, :date_of_birth, :year, :cohort)
   end
   
 end

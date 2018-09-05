@@ -11,7 +11,6 @@ class TeachersController < ApplicationController
   
   def create
     @teacher = Teacher.create(teacher_params)
-    @teacher.build_user(email: params[:email], password: params[:password]).save
     if @teacher.save
       redirect_to '/teachers'
     else
@@ -20,15 +19,17 @@ class TeachersController < ApplicationController
   end
 
   def show
+    @teacher = Teacher.find(params[:id])
   end
 
   def edit
+    @teacher = Teacher.find(params[:id])
   end
 
   def update
     @teacher = Teacher.find(params[:id])
     if @teacher.update(teacher_params)
-      redirect_to teachers_path
+      redirect_to '/teachers'
     else
       render 'edit'
     end

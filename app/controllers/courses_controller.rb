@@ -19,16 +19,16 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @cohorts = @course.cohorts
+    @course = Course.find(params[:id])
   end
 
   def edit
-    @cohorts = @course.cohorts
+    @course = Course.find(params[:id])
   end
 
   def update
     if @course.update(course_params)
-      redirect_to courses_path
+      redirect_to '/courses'
     else
       render 'edit'
     end
@@ -46,7 +46,7 @@ class CoursesController < ApplicationController
   end
 
   def course_params
-    params.require(:course).permit(:name, :location, :description, :icon_url, :class_hours)
+    params.require(:course).permit(:name, :location, :description, :class_hours)
   end
   
 end
