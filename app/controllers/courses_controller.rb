@@ -19,9 +19,11 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @cohorts = @course.cohorts
   end
 
   def edit
+    @cohorts = @course.cohorts
   end
 
   def update
