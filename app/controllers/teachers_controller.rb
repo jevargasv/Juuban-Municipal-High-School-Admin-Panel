@@ -13,7 +13,7 @@ class TeachersController < ApplicationController
     @teacher = Teacher.create(teacher_params)
     @teacher.build_user(email: params[:email], password: params[:password]).save
     if @teacher.save
-      redirect_to '/teachers'
+      redirect_to teachers_path
     else
       render 'new'
     end
@@ -37,7 +37,7 @@ class TeachersController < ApplicationController
   def destroy
     @teacher = Teacher.find(params[:id])
     @teacher.destroy
-    redirect_to '/teachers'
+    redirect_to teachers_path
   end
 
   private
@@ -47,7 +47,7 @@ class TeachersController < ApplicationController
   end
 
   def teacher_params
-    params.require(:teacher).permit(:first_name, :last_name, :age, :date_of_birth, :photo_url, :email, :fair, :salary, :education, :subject)
+    params.require(:teacher).permit(:first_name, :last_name, :age, :date_of_birth, :email, :fair, :salary, :education, :subject)
   end
 
 end
