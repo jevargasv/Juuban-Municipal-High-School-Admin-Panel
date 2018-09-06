@@ -4,7 +4,7 @@ This is an admin panel for Juuban Municipal High School, which Usagi Tsukino a.k
 
 # Main Page of the Panel
 
-![Main_Page](Main_Page.jpg)
+![Main Page](Main Page.png)
 
 # Heroku link
 
