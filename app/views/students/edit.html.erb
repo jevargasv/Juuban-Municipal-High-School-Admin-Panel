@@ -17,7 +17,7 @@
      <%= f.text_field :date_of_birth, placeholder: "Month Date, Year" %>
      <%= f.text_field :year, placeholder: "Year" %>
      <br>
-     <%= f.submit "Edit Student", class: "btn btn-warning" %>
+     <%= f.submit "Edit Student", class: "btn btn-warning" %> &nbsp;&nbsp; <%= link_to("Go Back", students_path, class: 'btn btn-secondary') %>
    <% end %>
    </div>
   </div>

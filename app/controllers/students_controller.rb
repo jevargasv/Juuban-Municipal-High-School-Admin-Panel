@@ -20,6 +20,7 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
+    @students = Student.where(cohort_id: @cohort.id)
   end
 
   def edit

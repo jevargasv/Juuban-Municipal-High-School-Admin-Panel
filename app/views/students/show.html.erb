@@ -19,7 +19,7 @@
    <br>
    <h3> Year:  <%= @student.year %> </h3>
    <br>
-   <%= link_to("Go Back", students_path, class: 'btn btn-secondary') %>
+   <%= link_to("Go Back", students_path, class: 'btn btn-secondary') %> &nbsp;&nbsp; <%= link_to "Edit", edit_student_path(@student), class: 'btn btn-warning' %>
    <br>
   </div>
  </div>

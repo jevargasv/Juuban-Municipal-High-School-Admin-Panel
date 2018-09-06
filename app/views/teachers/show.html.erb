@@ -23,7 +23,7 @@
    <br>
    <h3> Subject:  <%= @teacher.subject %> </h3>
    <br>
-   <%= link_to("Go Back", teachers_path, class: 'btn btn-secondary') %>
+   <%= link_to("Go Back", teachers_path, class: 'btn btn-secondary') %> &nbsp;&nbsp; <%= link_to "Edit", edit_teacher_path(@teacher), class: 'btn btn-warning' %>
    <br>
   </div>
  </div>

@@ -17,8 +17,9 @@
     <%= f.text_field :date_of_birth, placeholder: "Month Date, Year" %>
     <%= f.number_field :salary, placeholder: "Salary" %>
     <%= f.text_field :education, placeholder: "Education" %>
+    <%= f.text_field :subject, placeholder: "Subject" %>
     <br>
-    <%= f.submit "Add Teacher", class: "btn btn-success" %>
+    <%= f.submit "Add Teacher", class: "btn btn-success" %> &nbsp;&nbsp; <%= link_to("Go Back", teachers_path, class: 'btn btn-secondary') %>
   <% end %>
  </div>
 </div>
