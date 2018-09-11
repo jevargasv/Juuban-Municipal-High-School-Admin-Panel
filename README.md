@@ -6,6 +6,11 @@ This is an admin panel for Juuban Municipal High School, which Usagi Tsukino a.k
 
 ![alt text](https://github.com/jevargasv/Juuban-Municipal-High-School-Admin-Panel/blob/master/Main%20Page.png)
 
+# Built With:
+- CSS/SASS/Bootstrap - Design
+- Ruby on Rails - Functions and Data Display
+- PostgreSQL - Data Storage
+
 # Heroku link
 
 https://juuban-municipal-high-school.herokuapp.com/
