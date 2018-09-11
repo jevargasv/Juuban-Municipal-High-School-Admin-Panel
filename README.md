@@ -15,3 +15,6 @@ This is an admin panel for Juuban Municipal High School, which Usagi Tsukino a.k
 # Heroku link
 
 https://juuban-municipal-high-school.herokuapp.com/
+
+# Authors:
+Jennifer Vargas of NYCDA, September 4, 2018
