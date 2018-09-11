@@ -10,6 +10,7 @@ This is an admin panel for Juuban Municipal High School, which Usagi Tsukino a.k
 - CSS/SASS/Bootstrap - Design
 - Ruby on Rails - Functions and Data Display
 - PostgreSQL - Data Storage
+- Ajax/jQuery - Function Call for "Delete"
 
 # Heroku link
 
