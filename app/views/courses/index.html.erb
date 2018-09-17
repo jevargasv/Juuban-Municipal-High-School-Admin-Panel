@@ -19,7 +19,7 @@
     <td></td>
    </tr>
    <% @courses.each do |course| %>
-    <tr>
+    <tr id="course-<%= course.id %>">
      <td scope="row"><%= course.id %></td>
      <td><%= course.name %></td>
      <td><%= course.location %></td>

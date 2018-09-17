@@ -9,28 +9,28 @@
   <br>
  <table class="table table-hover">
    <tr>
-    <td width="20%" scope="col">ID</td>
-    <td width="20%" scope="col">First Name</td>
-    <td width="20%" scope="col">Last Name</td>
-    <td width="20%" scope="col">Age</td>
-    <td width="20%" scope="col">Date of Birth</td>
-    <td width="20%" scope="col">Year</td>
-    <td width="20%"></td>
-    <td width="20%"></td>
-    <td width="20%"></td>
+    <td style="padding-left: 12px;" scope="col">ID</td>
+    <td style="padding-left: 85px;" scope="col">First Name</td>
+    <td style="padding-left: 85px;" scope="col">Last Name</td>
+    <td style="padding-left: 85px;" scope="col">Age</td>
+    <td style="padding-left: 85px;" scope="col">Date of Birth</td>
+    <td style="padding-left: 85px;" scope="col">Year</td>
+    <td style="margin-left: 65px;"></td>
+    <td style="margin-left: 85px;"></td>
+    <td style=style="margin-left: 85px;"></td>
    </tr>
    <% @students.each do |student| %>
-    <tr>
-     <td scope="row"><%= student.id %></td>
-     <td><%= student.first_name %></td>
-     <td><%= student.last_name %></td>
-     <td><%= student.age %></td>
-     <td><%= student.date_of_birth %></td>
-     <td><%= student.year %></td>
-     <td><%= link_to "View", student_path(student), class: 'btn btn-info' %></td>
-     <td><%= link_to("Edit", edit_student_path(student), class: 'btn btn-warning') %></td>
-     <td><%= link_to "Delete", student, method: :delete, data: {confirm: 'Are you certain about deleting this student?'}, class: 'btn btn-danger' %></td>
-    </tr>
+   <tr id="student-<%= student.id %>">
+     <td style="padding-left: 12px;" scope="row"><%= student.id %></td>
+     <td style="padding-left: 85px;"><%= student.first_name %></td>
+     <td style="padding-left: 85px;"><%= student.last_name %></td>
+     <td style="padding-left: 85px;"><%= student.age %></td>
+     <td style="padding-left: 85px;"><%= student.date_of_birth %></td>
+     <td style="padding-left: 85px;"><%= student.year %></td>
+     <td style="margin-left: 65px;"><%= link_to "View", student_path(student), class: 'btn btn-info' %></td>
+     <td style="margin-left: 85px;"><%= link_to("Edit", edit_student_path(student), class: 'btn btn-warning') %></td>
+     <td style="margin-left: 85px;"><%= link_to "Delete", student, method: :delete, data: {confirm: 'Are you certain about deleting this student?'}, class: 'btn btn-danger' %></td>
+   </tr>
    <% end %>
 </table>
 <br>

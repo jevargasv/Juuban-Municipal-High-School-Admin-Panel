@@ -2,6 +2,7 @@ class TeachersController < ApplicationController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
 
   def index
+    @teachers = Teacher.order(:id).all
     @teachers = Teacher.all
   end
 
@@ -36,8 +37,7 @@ class TeachersController < ApplicationController
   end
 
   def destroy
-    @teacher = Teacher.find(params[:id])
-    @teacher.destroy
+    Teacher.find(params[:id]).destroy
     redirect_to '/teachers'
   end
 

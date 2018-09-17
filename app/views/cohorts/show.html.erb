@@ -35,19 +35,19 @@
 <br>
 <table class="table table-hover">
   <tr>
-    <td width="30%" scope="col">ID</td>
-    <td width="30%" scope="col">Student Name</td>
-    <td width="30%" scope="col">Age</td>
-    <td width="30%" scope="col">Date of Birth</td>
-    <td width="30%" scope="col">Year</td>
+    <td style="padding-left: 12px;" scope="col">ID</td>
+    <td style="padding-left: 180px;" scope="col">Student Name</td>
+    <td style="padding-left: 180px;" scope="col">Age</td>
+    <td style="padding-left: 180px;" scope="col">Date of Birth</td>
+    <td style="padding-left: 180px;" scope="col">Year</td>
   </tr>
   <% @students.each_with_index do |student, index| %>
   <tr>
-     <td scope="row"><%= student.id %></td>
-     <td><%= student.first_name %> <%= student.last_name %></td>
-     <td><%= student.age %></td>
-     <td><%= student.date_of_birth %></td>
-     <td><%= student.year %></td>
+     <td style="padding-left: 12px;" scope="row"><%= student.id %></td>
+     <td style="padding-left: 180px;"><%= student.first_name %> <%= student.last_name %></td>
+     <td style="padding-left: 180px;"><%= student.age %></td>
+     <td style="padding-left: 180px;"><%= student.date_of_birth %></td>
+     <td style="padding-left: 180px;"><%= student.year %></td>
   </tr>
   <% end %>
 </table>

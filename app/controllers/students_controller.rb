@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   
   def index
+    @students = Student.order(:id).all
     @students = Student.all
   end
 
@@ -20,7 +21,6 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
-    @students = Student.where(cohort_id: @cohort.id)
   end
 
   def edit
@@ -36,7 +36,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @student.destroy
+    Student.find(params[:id]).destroy
     redirect_to '/students'
   end
 
@@ -47,7 +47,7 @@ class StudentsController < ApplicationController
   end
 
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :age, :date_of_birth, :year, :cohort)
+    params.require(:student).permit(:first_name, :last_name, :age, :date_of_birth, :year, :cohort_id)
   end
   
 end

@@ -2,6 +2,7 @@ class CohortsController < ApplicationController
   before_action :set_cohort, only: [:show, :edit, :update, :destroy]
 
   def index
+    @cohorts = Cohort.order(:id).all
     @cohorts = Cohort.all
   end
 
@@ -37,7 +38,7 @@ class CohortsController < ApplicationController
   end
 
   def destroy
-    @cohort.destroy
+    Cohort.find(params[:id]).destroy
     redirect_to '/cohorts'
   end
 
@@ -48,7 +49,7 @@ class CohortsController < ApplicationController
   end
 
   def cohort_params
-    params.require(:cohort).permit(:name, :start_date, :end_date, :course, :teacher)
+    params.require(:cohort).permit(:name, :start_date, :end_date, :course_id, :teacher_id)
   end
 
 end

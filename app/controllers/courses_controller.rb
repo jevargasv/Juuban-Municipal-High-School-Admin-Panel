@@ -2,6 +2,7 @@ class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   def index
+    @courses = Course.order(:id).all
     @courses = Course.all
   end
 
@@ -35,7 +36,7 @@ class CoursesController < ApplicationController
   end
 
   def destroy
-    @course.destroy
+    Course.find(params[:id]).destroy
     redirect_to '/courses'
   end
 
